@@ -1,0 +1,26 @@
+.reportWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin: 1rem 0;
+    height: 20%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .reportWrap {
+    min-height: 80vh;
+    flex-direction: row;
+    div {
+      width: 50%;
+      height: 50%;
+    }
+  }
+}

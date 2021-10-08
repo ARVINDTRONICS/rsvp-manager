@@ -1,0 +1,17 @@
+.home {
+  width: 100%;
+  min-height: 90vh;
+  position: relative;
+  background-size: cover;
+  background-image: url("../../assets/images/group.jpg");
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .loginSwitch {
+    width: 80%;
+    display: flex;
+    margin: 1rem;
+    justify-content: flex-end;
+  }
+}

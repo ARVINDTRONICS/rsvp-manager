@@ -1,0 +1,14 @@
+.formWrap {
+  width: 85%;
+  margin: 2.5rem 0;
+  height: auto;
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+}
+@media only screen and (min-width: 768px) {
+  .formWrap {
+    width: 35%;
+    padding: 2.5rem;
+  }
+}
