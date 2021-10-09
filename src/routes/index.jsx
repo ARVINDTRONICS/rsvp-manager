@@ -15,7 +15,7 @@ const RSVProutes = () => {
 
   const handleLogin = async (login) => {
     let res = await loginService(login);
-
+    console.log(res);
     if (res.status === 200) {
       setAuth(true);
     }
@@ -38,17 +38,29 @@ const RSVProutes = () => {
 
   React.useEffect(() => {
     checkAuthStatus();
-  }, [auth]);
+  });
 
   return (
     <Router>
       <Suspense fallback={Loader}>
         <Switch>
           <Route
-            path="/home"
+            path=""
             exact={true}
             render={(props) => {
-              return <Home {...props} handleLogin={handleLogin} auth={auth} />;
+              if (!auth) {
+                return (
+                  <Home {...props} handleLogin={handleLogin} auth={auth} />
+                );
+              } else {
+                return (
+                  <Listing
+                    {...props}
+                    auth={auth}
+                    logoutHandler={logoutHandler}
+                  />
+                );
+              }
             }}
           />
           <Route

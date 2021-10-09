@@ -7,6 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1.User/Attendees can submit information and RSVP to an event
 2.Admins can login and view RSVP'ed attendees,check reports and attendee details
 
+# Demo-url
+
 # TechStack
 
 ReactJS

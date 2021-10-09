@@ -24,6 +24,16 @@ export const prepareAverageGroupSizeCard = (data) => {
   averageGroupSize = guestsCount / totalAttendees;
   return Math.round(averageGroupSize);
 };
+export const prepareTotalSizeCard = (data) => {
+  let totalAttendees = data.length;
+  let totalguestsCount = 0;
+  data.forEach((each) => (totalguestsCount += Number(each.guests)));
+  return {
+    totalAttendees,
+    totalguestsCount,
+    total: totalAttendees + totalguestsCount
+  };
+};
 
 export const prepareLocalityChart = (data) => {
   let localityGroup = {};
@@ -60,5 +70,6 @@ export const chartService = {
   prepareAgeChart: prepareProfessionChart,
   prepareAverageGroupSizeCard: prepareAverageGroupSizeCard,
   prepareLocalityChart: prepareLocalityChart,
-  prepareProfessionChart: prepareProfessionChart
+  prepareProfessionChart: prepareProfessionChart,
+  prepareTotalSizeCard: prepareTotalSizeCard
 };

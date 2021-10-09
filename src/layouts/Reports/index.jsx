@@ -20,17 +20,41 @@ export const Reports = ({ data }) => {
   const [groupChart, setGroupChart] = React.useState([]);
   const [localityChart, setLocalityChart] = React.useState([]);
   const [professionChart, setProfessionChart] = React.useState([]);
+  const [totalAttendeesCard, settotalAttendeesCard] = React.useState({});
 
   useEffect(() => {
     setAgeChart(chartService.prepareAgeChart(data));
     setGroupChart(chartService.prepareAverageGroupSizeCard(data));
     setLocalityChart(chartService.prepareLocalityChart(data));
     setProfessionChart(chartService.prepareProfessionChart(data));
+    settotalAttendeesCard(chartService.prepareTotalSizeCard(data));
   }, [data]);
 
   return (
     <div className={classes.reportWrap}>
-      <div>
+      <div className={classes.reportCard}>
+        {totalAttendeesCard && (
+          <Paper
+            sx={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              color: "white",
+              justifyContent: "space-around",
+              alignItems: "center",
+              backgroundColor: "#FF9231",
+              minWidth: "200px",
+              minHeight: "150px"
+            }}
+            elevation={3}
+          >
+            <h6>{`Total RSVP'ed : ${totalAttendeesCard.totalAttendees}`}</h6>
+            <h6>{`Total Guest : ${totalAttendeesCard.totalguestsCount}`}</h6>
+            <h6>{`Total Attendees : ${totalAttendeesCard.total}`}</h6>
+          </Paper>
+        )}
+      </div>
+      <div className={classes.reportChart}>
         {ageChart && (
           <BarComponent
             data={ageChart}
@@ -41,7 +65,7 @@ export const Reports = ({ data }) => {
         )}
       </div>
 
-      <div>
+      <div className={classes.reportChart}>
         {localityChart && (
           <BarComponent
             data={localityChart}
@@ -51,15 +75,19 @@ export const Reports = ({ data }) => {
           ></BarComponent>
         )}
       </div>
-      <div>
+      <div className={classes.reportCard}>
         {groupChart && (
           <Paper
             sx={{
-              padding: "2rem",
+              padding: "1rem",
               display: "flex",
               flexDirection: "column",
               color: "white",
-              backgroundColor: "#FF9231"
+              justifyContent: "space-around",
+              alignItems: "center",
+              backgroundColor: "#FF9231",
+              minWidth: "200px",
+              minHeight: "150px"
             }}
             elevation={3}
           >
@@ -68,7 +96,8 @@ export const Reports = ({ data }) => {
           </Paper>
         )}
       </div>
-      <div>
+
+      <div className={classes.reportChart}>
         {professionChart && (
           <PieComponent
             data={professionChart}
