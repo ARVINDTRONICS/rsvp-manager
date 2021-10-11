@@ -28,7 +28,18 @@ export const Registeration = () => {
   const [formValues, setFormValues] = useState(defaultState);
   const [toast, setToast] = useState(false);
   const handleInput = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    //calculate age based on DOB,disabled age selection
+    if (e.target.name === "dob") {
+      let currentYear = new Date().getFullYear();
+      let age = currentYear - String(e.target.value).split("-")[0];
+      setFormValues({
+        ...formValues,
+        [e.target.name]: e.target.value,
+        age
+      });
+    } else {
+      setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,10 +94,7 @@ export const Registeration = () => {
             label="Age"
             type="number"
             value={formValues.age}
-            onChange={(e) => {
-              handleInput(e);
-            }}
-            inputProps={{ min: 12, max: 80 }}
+            disabled
           />
         </Grid>
         <Grid item xs={8} md={6}>

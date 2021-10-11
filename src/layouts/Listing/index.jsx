@@ -44,7 +44,14 @@ export const Listing = ({ logoutHandler }) => {
   }, []);
 
   if (isLoading) {
-    return <Loader open={true} />;
+    return (
+      <Loader
+        open={true}
+        handleClose={() => {
+          setisLoading(false);
+        }}
+      />
+    );
   } else {
     const listToDisplay =
       searchTerm.length > 0 ? filteredAttendeeList : attendeeList;
